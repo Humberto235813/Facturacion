@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Administrador de Facturas</title>
+</head>
+<body>
+    <h1>Administrador de Facturas</h1>
+
+    <!-- Formulario para agregar una factura -->
+    <form action="/agregar" method="post">
+        <input type="text" name="numero" placeholder="Número de Factura" required>
+        <input type="text" name="cliente" placeholder="Nombre del Cliente" required>
+        <input type="text" name="monto" placeholder="Monto de la Factura" required>
+        <button type="submit">Agregar Factura</button>
+    </form>
+
+    <h2>Lista de Facturas</h2>
+    <ul>
+        {% for factura in facturas %}
+            <li>
+                Número: {{ factura.numero }}, Cliente: {{ factura.cliente }}, Monto: {{ factura.monto }}
+                <a href="/editar/{{ factura.id }}">Editar</a> | <a href="/eliminar/{{ factura.id }}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

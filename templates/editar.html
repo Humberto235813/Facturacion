@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Editar Factura</title>
+</head>
+<body>
+    <h1>Editar Factura</h1>
+
+    <!-- Formulario para editar una factura -->
+    <form action="{{ url_for('editar', id=factura.id) }}" method="post">
+        <input type="text" name="numero" placeholder="Número de Factura" value="{{ factura.numero }}" required>
+        <input type="text" name="cliente" placeholder="Nombre del Cliente" value="{{ factura.cliente }}" required>
+        <input type="text" name="monto" placeholder="Monto de la Factura" value="{{ factura.monto }}" required>
+        <button type="submit">Guardar Cambios</button>
+    </form>
+
+    <a href="{{ url_for('index') }}">Cancelar</a>
+</body>
+</html>
